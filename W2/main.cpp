@@ -1,3 +1,4 @@
+#include <iostream>
 #include <vector>
 #include <ranges>
 #include <fmt/core.h>
@@ -24,6 +25,28 @@ std::string reversedWords(std::string text)
     return final_str;
 }
 
+void justText(std::string text = "", int line_len = 20, char sign = '#')
+{
+    std::string line(line_len, sign);
+    std::string justLeft = line;
+    std::string justRight = line;
+    std::string justMiddle = line;
+
+
+    //just left
+    justLeft.replace(0, text.length(), text);
+    std::cout << justLeft << std::endl;
+
+    //just right
+    justRight.replace(line_len -text.length(), text.length(), text);
+    std::cout << justRight << std::endl;
+
+    // just middle
+    justMiddle.replace((line_len/2) - (text.length()/2), text.length(), text );
+    std::cout << justMiddle << std::endl;
+
+}
+
 int main()
 {
     fmt::println(
@@ -33,6 +56,8 @@ int main()
             reversedWords(""),
             reversedWords("1 2 3")
     );
+
+    justText("Textt", 20,'*');
 
     return 0;
 }
